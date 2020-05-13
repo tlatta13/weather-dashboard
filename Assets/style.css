@@ -1,0 +1,28 @@
+h3 {
+    color: cadetblue;
+    text-decoration: underline;
+    padding: 15px;
+
+}
+
+.asideBKG {
+    background-color: cadetblue;
+}
+
+.weather-card {
+    margin: 0 auto;
+}
+
+.weather {
+
+}
+
+.forecast {
+    background-color: cadetblue;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.city {
+
+}
