@@ -22,10 +22,10 @@
         displayHistory();
     });
 
-    // When past search clicked, research
-    // $(document).on("click", ".city" function(){
-    //     console.log(($(this).text()));
-    // })
+    //When past search clicked, research
+    $(document).on("click", ".city-history", function(){
+        console.log(($(this).text()));
+    })
     
     
     // Display current weater on search
@@ -94,7 +94,7 @@
 
 
 
-    
+
         // Display current weater on search
         // function displayForecast() {
 
