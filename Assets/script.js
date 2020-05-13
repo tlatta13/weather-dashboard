@@ -21,15 +21,10 @@
         $("#citySearch").val("");
         displayHistory();
     });
-
-    //When past search clicked, research
-    $(document).on("click", ".city-history", function(){
-        console.log(($(this).text()));
-    })
     
     
     // Display current weater on search
-    function displayCurrentWeather() {
+    function displayWeather() {
 
         var city = $("#citySearch").val().trim();
         var currentURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=1676bf31a729a27d97e9612112df0899";
@@ -55,7 +50,12 @@
             // Show wind speed
             displayBox.append($("<h4>").text("Wind Speed " + response.wind.speed + " MPH"));
             // Display UV Index
-            
+            // $.ajax({
+            //     url: "http://api.openweathermap.org/data/2.5/uvi?appid=1676bf31a729a27d97e9612112df0899&" + "lat=" + response.coord.lat + & + "lon=" + response.coord.lon,
+            //     method: "GET"
+            // }).then(function(UV) {
+            //     displayBox.append($("<h4>").text("Wind Speed " + UV.wind.speed + " MPH"));
+            // }
             // Append div.weather
             $(".weather").append(displayBox);
         });
@@ -87,9 +87,16 @@
         });
     }
     
-    $(document).on("click", ".city-btn", displayCurrentWeather);
+    //When past search clicked, research
+    $(document).on("click", ".city-history", function(event){
+        event.preventDefault();
+        displayWeather();
+        console.log(($(this).text()));
+    });
+
+    $(document).on("click", ".city-btn", displayWeather);
     // $(document).on("click", ".city-btn", displayForecast);
-    $("city-history").on("click", displayCurrentWeather)
+    //$("city-history").on("click", displayCurrentWeather)
     displayHistory()
 
 
