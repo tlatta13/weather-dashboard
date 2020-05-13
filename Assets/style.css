@@ -1,8 +1,8 @@
 h3 {
     color: cadetblue;
     text-decoration: underline;
-    padding: 15px;
-
+    padding-top: 15px;
+    line-height: 1.25em;
 }
 
 .asideBKG {
@@ -19,8 +19,18 @@ h3 {
 
 .forecast {
     background-color: cadetblue;
-    height: 100px;
     margin: 0 auto;
+}
+
+.days-date {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.days {
+    color: white;
+    font-size: 12px;
 }
 
 .city {
