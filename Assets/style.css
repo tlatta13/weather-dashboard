@@ -13,10 +13,6 @@ h3 {
     margin: 0 auto;
 }
 
-.weather {
-
-}
-
 .forecast {
     background-color: cadetblue;
     margin: 0 auto;
@@ -32,8 +28,4 @@ h3 {
 .days {
     color: white;
     font-size: 12px;
-}
-
-.city {
-
 }

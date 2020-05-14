@@ -6,7 +6,7 @@ function displayHistory () {
     $("#history").empty();
 
     for (var i = 0; i < searchHistory.length; i++) {
-        $("#history").prepend($("<button class='city-btn'>").text(searchHistory[i]));
+        $("#history").prepend($("<button class='city-history'>").text(searchHistory[i]));
     }
 }
 
@@ -74,8 +74,6 @@ function displayWeather() {
         // Append div.weather            
         $(".weather").append(displayBox);
     });
-        
-
 
     // Forecast Weather
     var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=1676bf31a729a27d97e9612112df0899";
@@ -90,7 +88,7 @@ function displayWeather() {
         console.log(responses);
         
         // Forecast Weather Day 1 Display Elements      
-        var forecastBox1 = $("<div class='card col-md-2 forecast'>");
+        var forecastBox1 = $("<div class='card col-md-2 col-sm-10 forecast'>");
         // Forecast date day 1
         forecastBox1.append($("<p class='days-date'>").text(responses.list[6].dt_txt));
         // Forecast Icon day 1
@@ -106,7 +104,7 @@ function displayWeather() {
         $(".fiveDayForecast").append(forecastBox1);
 
         // Forecast Weather Day 2 Display Elements      
-        var forecastBox2 = $("<div class='card col-md-2 forecast'>");
+        var forecastBox2 = $("<div class='card col-md-2 col-sm-10 forecast'>");
         // Forecast date day 2
         forecastBox2.append($("<p class='days-date'>").text(responses.list[14].dt_txt));
         // Forecast Icon day 2
@@ -122,7 +120,7 @@ function displayWeather() {
         $(".fiveDayForecast").append(forecastBox2);
 
         // Forecast Weather Day 3 Display Elements      
-        var forecastBox3 = $("<div class='card col-md-2 forecast'>");
+        var forecastBox3 = $("<div class='card col-md-2 col-sm-10 forecast'>");
         // Forecast date day 3
         forecastBox3.append($("<p class='days-date'>").text(responses.list[22].dt_txt));
         // Forecast Icon day 3
@@ -138,7 +136,7 @@ function displayWeather() {
         $(".fiveDayForecast").append(forecastBox3);
 
         // Forecast Weather Day 4 Display Elements      
-        var forecastBox4 = $("<div class='card col-md-2 forecast'>");
+        var forecastBox4 = $("<div class='card col-md-2 col-sm-10 forecast'>");
         // Forecast date day 4
         forecastBox4.append($("<p class='days-date'>").text(responses.list[30].dt_txt));
         // Forecast Icon day 4
@@ -154,7 +152,7 @@ function displayWeather() {
         $(".fiveDayForecast").append(forecastBox4);
 
         // Forecast Weather Day 5 Display Elements      
-        var forecastBox5 = $("<div class='card col-md-2 forecast'>");
+        var forecastBox5 = $("<div class='card col-md-2 col-sm-10 forecast'>");
         // Forecast date day 5
         forecastBox5.append($("<p class='days-date'>").text(responses.list[38].dt_txt));
         // Forecast Icon day 5
@@ -174,11 +172,11 @@ function displayWeather() {
 displayHistory()
 
 //When past search clicked, research
-// $(document).on("click", ".city-history", function(event) {
-//     event.preventDefault();
-//     displayWeather();
-//     console.log(($(this).text()));
-// });
+$(document).on("click", ".city-history", function() {
+    event.preventDefault();
+    displayWeather();
+    console.log(($(this).text()));
+});
 
 $(document).on("click", ".city-btn", displayWeather);
 // $(document).on("click", ".city-history", displayWeather);
