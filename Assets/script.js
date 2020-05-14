@@ -6,7 +6,7 @@ function displayHistory () {
     $("#history").empty();
 
     for (var i = 0; i < searchHistory.length; i++) {
-        $("#history").prepend($("<button class='city-history'>").text(searchHistory[i]));
+        $("#history").prepend($("<button class='city-btn'>").text(searchHistory[i]));
     }
 }
 
@@ -41,8 +41,12 @@ function displayWeather() {
         
         // Current Weather Display Elements
         var displayBox = $("<div>");
-        // Show temp
+        // Show City
         displayBox.append($("<h3>").text("Current weather in " + response.name + ":"));
+        // Show weather icon
+        var iconCode0 = response.weather[0].icon;
+        var iconURL0 = "https://openweathermap.org/img/wn/" + iconCode0 + ".png";
+        displayBox.append($("<img>").attr("src", iconURL0));
         // Current temp
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
         displayBox.append($("<h4>").text("Temperature (F): " + tempF.toFixed(2)));
@@ -51,17 +55,27 @@ function displayWeather() {
         // Show wind speed
         displayBox.append($("<h4>").text("Wind Speed: " + response.wind.speed + " MPH"));
         // Display UV Index
-        // $.ajax({
-        // url: "https://api.openweathermap.org/data/2.5/uvi?appid=1676bf31a729a27d97e9612112df0899&" + "lat=" + response.coord.lat + "&" + "lon=" + response.coord.lon,
-        // method: "GET"
-        // }).then(function(UV) {
-        //         displayBox.append($("<h4>").text("Wind Speed " + UV.wind.speed + " MPH"));
-        //     });
-        // });
-        
+        $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/uvi?appid=1676bf31a729a27d97e9612112df0899&" + "lat=" + response.coord.lat + "&" + "lon=" + response.coord.lon,
+        method: "GET"
+        }).then(function(UV) {
+            console.log(UV)
+            displayBox.append($("<h4 class='uvIndex'>").text("UV Index: " + UV.value));
+            if (UV.value < 5) {
+                $(".uvIndex").css("background-color", "green");
+            } else if (UV.value > 10) {
+                $(".uvIndex").css("background-color", "red");
+            } else {
+                $(".uvIndex").css("background-color", "yellow")
+            }
+        });
+    
+    
         // Append div.weather            
         $(".weather").append(displayBox);
     });
+        
+
 
     // Forecast Weather
     var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=1676bf31a729a27d97e9612112df0899";
@@ -95,12 +109,10 @@ function displayWeather() {
         var forecastBox2 = $("<div class='card col-md-2 forecast'>");
         // Forecast date day 2
         forecastBox2.append($("<p class='days-date'>").text(responses.list[14].dt_txt));
-        
         // Forecast Icon day 2
         var iconCode2 = responses.list[14].weather[0].icon;
         var iconURL2 = "https://openweathermap.org/img/wn/" + iconCode2 + ".png";
         forecastBox2.append($("<img>").attr("src", iconURL2));
-        
         // Forecast Temp day 2
         var tempF = (responses.list[14].main.temp - 273.15) * 1.80 + 32;
         forecastBox2.append($("<p class='days'>").text("Temp (F): " + tempF.toFixed(2)));
@@ -159,14 +171,15 @@ function displayWeather() {
     });
 }
 
+displayHistory()
+
 //When past search clicked, research
-$(document).on("click", ".city-history", function(event){
-    event.preventDefault();
-    displayWeather();
-    console.log(($(this).text()));
-});
+// $(document).on("click", ".city-history", function(event) {
+//     event.preventDefault();
+//     displayWeather();
+//     console.log(($(this).text()));
+// });
 
 $(document).on("click", ".city-btn", displayWeather);
-// $(document).on("click", ".city-btn", displayForecast);
-//$("city-history").on("click", displayCurrentWeather)
-displayHistory()
+// $(document).on("click", ".city-history", displayWeather);
+// $(".city-history").on("click", displayWeather);
