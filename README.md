@@ -10,16 +10,12 @@ This project required us to create a weather dashboard that allows a user to inp
 * Displayed a list of useful weather data for users to view
 * Quiz moves from question to question after user answers
 
-
 ## Images
-![Dashboard example 1](Asset/Images/Weather-Dashboard-1.jpg)
-Format: ![Dashboard example 1](Asset/Images/Weather-Dashboard-1.jpg)
+![Dashboard example 1](https://github.com/tlatta13/weather-dashboard/blob/master/Assets/Images/Weather-Dashboard-1.jpg)
 
-![Dashboard example 2](Asset/Images/Weather-Dashboard-2.jpg)
-Format: ![Dashboard example 2](Asset/Images/Weather-Dashboard-2.jpg)
+![Dashboard example 2](https://github.com/tlatta13/weather-dashboard/blob/master/Assets/Images/Weather-Dashboard-2.jpg)
 
-![Dashboard example 3](Asset/Images/Weather-Dashboard-3.jpg")
-Format: ![Dashboard example 3](Asset/Images/Weather-Dashboard-3.jpg)
+![Dashboard example 3](https://github.com/tlatta13/weather-dashboard/blob/master/Assets/Images/Weather-Dashboard-3.jpg)
 
 ## Site Link
 https://tlatta13.github.io/weather-dashboard/
